@@ -1,3 +1,8 @@
+
+
+
+
+
 <template>
   <v-flex class="background__base">
     <v-btn icon fixed class="play" large color="rgb(254,105,36)" elevation="15"><v-icon color="white" size="30" >fas fa-play</v-icon></v-btn>
@@ -22,6 +27,7 @@
 
   export default {
     name: 'home',
+    layout: 'default',
     data() {
       return {
         logo,
