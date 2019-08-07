@@ -31,6 +31,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '@fortawesome/fontawesome-free/css/all.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -56,6 +57,9 @@ module.exports = {
       warning: colors.amber.base,
       error: colors.deepOrange.accent4,
       success: colors.green.accent3
+    },
+    icons : {
+      iconfont: 'fa'
     }
   },
   /*
