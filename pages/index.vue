@@ -1,5 +1,7 @@
 <template>
-    <v-flex class="index">
+  <v-flex @resize="resize">
+    <v-flex :class="indexClass">
+      <v-flex v-show="validScreenSize">
       <v-btn icon fixed class="play" large color="rgb(254,105,36)" elevation="15">
         <v-icon color="white" :size="buttonSize">fas fa-play</v-icon>
       </v-btn>
@@ -10,7 +12,14 @@
       </v-flex>
       <v-flex class="logo logo__elipse">
       </v-flex>
+      </v-flex>
     </v-flex>
+      <v-layout :class="indexClass" wrap>
+      <v-flex xs12>
+        Vertical ressolution is not supported yet!
+      </v-flex>
+      </v-layout>
+  </v-flex>
 </template>
 
 <script>
@@ -18,10 +27,29 @@ import logo from '../assets/piio.svg'
 
   export default {
     layout: 'main',
+    created() {
+      window.addEventListener('resize', () => {
+        this.validScreenSize = window.innerWidth / window.innerHeight > 0.75
+      })
+    },
+    destroyed() {
+      window.removeEventListener('resize', this.handleResize)
+    },
     data() {
       return {
         logo,
-        buttonSize: window.innerWidth > 1200 ? 30 : 20
+        buttonSize: window.innerWidth > 1200 ? 30 : 20,
+        validScreenSize: true
+      }
+    },
+    computed: {
+      indexClass() {
+        return !this.validScreenSize ? 'index index--not-supported' : 'index'
+      },
+    },
+    methods: {
+      resize (event){
+        console.log(event)
       }
     }
   };
@@ -31,54 +59,16 @@ import logo from '../assets/piio.svg'
 <style scoped lang="sass">
   .index
     font-family: Roboto, sans-serif
-  @media screen and (max-width: 700px)
-    .logo
-      z-index: 10
+    &--not-supported
+      z-index: 9999
       position: fixed
-      top: 48vh
-      left: 60vw
-      &__name
-        width: 400px
-        margin-left: -330px
-        margin-top: -200px
-      &__app
-        color: white
-        font-size: 20px
-        font-weight: 100
-        margin-left: 30px
-        margin-top: 40px
-      &__version
-        font-size: 12px
-      &__elipse
-        z-index: 9 !important
-        height: 140px
-        margin-top: -70px
-        margin-left: -150px
-        width: 180px
-        border-radius: 90px / 70px
-        -moz-border-radius: 100px / 50px
-        transform: rotate(45deg)
-        -webkit-transform: rotate(45deg)
-        -moz-transform: rotate(45deg)
-        -o-transform: rotate(45deg)
-        -webkit-box-shadow: -20px 30px 23px 0px rgba(0,0,0,0.5)
-        -moz-box-shadow: -20px 30px 23px 0px rgba(0,0,0,0.5)
-        box-shadow: -5px 10px 23px 0px rgba(0,0,0,0.5)
-        background: rgb(253,77,22)
-    .play
-      z-index: 11
-      position: absolute
-      left: 50vw
-      top: 80vh
-      margin-top: -50px
-      margin-left: -50px
-      width: 100px !important
-      height: 100px !important
-    .info
-      z-index: 10
-      top: 30px
-      right: 30px
-      bottom: 20vh
+      height: 100vh
+      width: 100vw
+      background: rgb(191,62,0)
+      font-size: 50px
+      text-align: center
+      color: white
+      padding-top: 20%
   @media screen and (max-width: 1200px) and (min-width: 700px)
     .logo
       z-index: 10
