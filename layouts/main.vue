@@ -112,7 +112,7 @@
         width: 130vw
         margin-left: -10px
         margin-top: 400px
-        height: 700px
+        height: 1700px
       &__fifth
         z-index: 6
         position: fixed
