@@ -1,5 +1,5 @@
 <template>
-    <v-flex @resize="resize">
+    <v-flex>
         <v-flex>
             <v-flex v-show="validScreenSize">
                 <v-btn class="play" color="rgb(254,105,36)" elevation="15" fixed icon large>
@@ -14,22 +14,16 @@
                 </v-flex>
             </v-flex>
         </v-flex>
-        <v-layout wrap>
-            <v-flex class="not-supported text-md-center" v-show="!validScreenSize" xs12>
-              <v-flex class="not-supported__emoji">
-                <v-icon dark size="100">far fa-dizzy</v-icon>
-              </v-flex>
-                <v-divider class="not-supported__divider"></v-divider>
-                <span class="not-supported__text">Resolution is not supported jet</span>
-            </v-flex>
-        </v-layout>
+        <not-supported-component :show="!validScreenSize" />
     </v-flex>
 </template>
 
 <script>
   import logo from '../assets/piio.svg';
+  import NotSupportedComponent from '../components/NotSupportedComponent';
 
   export default {
+    components: { NotSupportedComponent },
     layout: 'main',
     created() {
       window.addEventListener('resize', () => {
@@ -45,40 +39,12 @@
         buttonSize: window.innerWidth > 1200 ? 30 : 20,
         validScreenSize: true
       };
-    },
-    computed: {
-      indexClass() {
-        return !this.validScreenSize ? 'index index--not-supported' : 'index';
-      },
-    },
-    methods: {
-      resize(event) {
-        console.log(event);
-      }
     }
   };
 </script>
 
 
 <style lang="sass" scoped>
-    .not-supported
-        font-family: Roboto, sans-serif
-        z-index: 9999
-        background: rgba(0, 0, 0, 0.5)
-        margin-top: 40vh
-        margin-left: 10px
-        margin-right: 10px
-        padding: 5vh 10px 10vh 10px
-        text-align: center
-        border-radius: 10px
-        font-size: 40px
-        color: white
-        &__divider
-          padding-top: 1vh
-          padding-bottom: 1vh
-        &__emoji
-          padding-bottom: 2vh
-
     @media screen and (max-width: 1200px) and (min-width: 700px)
         .logo
             z-index: 10
