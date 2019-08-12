@@ -1,20 +1,21 @@
 <template>
-    <v-flex>
+    <v-flex class="base">
         <v-flex>
             <v-flex v-show="validScreenSize">
                 <v-btn class="play" color="rgb(254,105,36)" elevation="15" fixed icon large>
                     <v-icon :size="buttonSize" color="white">fas fa-play</v-icon>
                 </v-btn>
                 <v-btn class="info" color="rgb(191,62,0)" fixed large rounded>info</v-btn>
-                <v-flex class="logo logo__name">
-                    <v-img :src="logo" size="100"></v-img>
-                    <v-flex class="logo logo__app">app <span class="logo__version">v3</span></v-flex>
-                </v-flex>
-                <v-flex class="logo logo__elipse">
+                <v-flex class="logo">
+                    <v-flex class="logo__name">
+                        <v-img :src="logo" class="logo__name--z-index" size="100"></v-img>
+                    </v-flex>
+                    <v-flex class="logo__app">app <span class="logo__version">v3</span></v-flex>
+                    <v-flex class="logo__elipse"></v-flex>
                 </v-flex>
             </v-flex>
         </v-flex>
-        <not-supported-component :show="!validScreenSize" />
+        <not-supported-component :show="!validScreenSize"/>
     </v-flex>
 </template>
 
@@ -45,29 +46,39 @@
 
 
 <style lang="sass" scoped>
+    .base
+        font-family: "Roboto Thin", Arial, sans-serif
     @media screen and (max-width: 1200px) and (min-width: 700px)
         .logo
             z-index: 10
             position: fixed
             top: 30vh
-            left: 60vw
+            left: 50vw
+            margin-top: -100px
+            margin-left: -120px
+            height: 200px
+            width: 300px
             &__name
-                width: 400px
-                margin-left: -330px
-                margin-top: -200px
+                z-index: 8 !important
+                margin-left: -70px
+                margin-top: -70px
+                &--z-index
+                    z-index: 10
             &__app
-                color: white
-                font-size: 20px
-                font-weight: 100
-                margin-left: 30px
-                margin-top: 40px
+                position: absolute
+                top: 0
+                left: 0
+                margin-top: 40%
+                margin-left: 70%
             &__version
-                font-size: 12px
+                font-size: 10px
             &__elipse
                 z-index: 9 !important
+                position: absolute
+                top: 0
+                left: 0
+                margin-left: 30px
                 height: 140px
-                margin-top: -70px
-                margin-left: -150px
                 width: 180px
                 border-radius: 90px / 70px
                 -moz-border-radius: 100px / 50px
@@ -97,29 +108,37 @@
         .logo
             z-index: 10
             position: fixed
-            top: 50vh
+            top: 55vh
             left: 50vw
+            margin-top: -125px
+            margin-left: -200px
+            height: 250px
+            width: 400px
             &__name
-                width: 600px
-                margin-left: -400px
-                margin-top: -270px
+                margin-left: -70px
+                margin-top: -70px
+                &--z-index
+                    z-index: 10
+                    width: 400px
             &__app
-                z-index: 10
-                color: white
-                font-size: 30px
-                font-weight: 100
-                margin-left: 130px
-                margin-top: 90px
+                position: absolute
+                top: 0
+                left: 0
+                margin-top: 45%
+                margin-left: 72%
+                font-size: 20px
             &__version
-                font-size: 12px
+                font-size: 15px
             &__elipse
                 z-index: 9 !important
-                height: 240px
-                margin-top: -70px
-                margin-left: -140px
-                width: 280px
-                border-radius: 140px / 120px
-                -moz-border-radius: 100px / 50px
+                position: absolute
+                top: 0
+                left: 0
+                margin-left: 45px
+                height: 220px
+                width: 260px
+                border-radius: 130px / 110px
+                -moz-border-radius: 130px / 110px
                 transform: rotate(45deg)
                 -webkit-transform: rotate(45deg)
                 -moz-transform: rotate(45deg)
