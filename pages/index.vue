@@ -16,15 +16,17 @@
             </v-flex>
         </v-flex>
         <not-supported-component :show="!validScreenSize"/>
+        <footer-component></footer-component>
     </v-flex>
 </template>
 
 <script>
   import logo from '../assets/piio.svg';
   import NotSupportedComponent from '../components/NotSupportedComponent';
+  import FooterComponent from '../components/FooterComponent';
 
   export default {
-    components: { NotSupportedComponent },
+    components: { FooterComponent, NotSupportedComponent },
     layout: 'main',
     created() {
       window.addEventListener('resize', () => {
@@ -126,9 +128,9 @@
                 left: 0
                 margin-top: 45%
                 margin-left: 72%
-                font-size: 20px
+                font-size: 25px
             &__version
-                font-size: 15px
+                font-size: 16px
             &__elipse
                 z-index: 9 !important
                 position: absolute
