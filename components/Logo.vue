@@ -1,0 +1,123 @@
+<template>
+    <v-flex class="logo">
+        <v-flex class="logo__name">
+            <v-img :src="logo" class="logo__name--z-index" size="100"></v-img>
+        </v-flex>
+        <v-flex class="logo__app">app <span class="logo__version">v3</span></v-flex>
+        <v-flex class="logo__elipse"></v-flex>
+    </v-flex>
+</template>
+
+<script>
+  import logo from '../assets/piio.svg';
+  export default {
+    name: 'Logo',
+    data() {
+      return {
+        logo
+      }
+    }
+  };
+</script>
+
+<style lang="sass" scoped>
+    .base
+        font-family: "Roboto Thin", Arial, sans-serif
+
+    @media screen and (max-width: 1200px) and (min-width: 700px)
+        .logo
+            z-index: 10
+            position: fixed
+            top: 30vh
+            left: 50vw
+            margin-top: -100px
+            margin-left: -120px
+            height: 200px
+            width: 300px
+
+            &__name
+                z-index: 8 !important
+                margin-left: -70px
+                margin-top: -70px
+
+                &--z-index
+                    z-index: 10
+
+            &__app
+                position: absolute
+                top: 0
+                left: 0
+                margin-top: 40%
+                margin-left: 70%
+
+            &__version
+                font-size: 10px
+
+            &__elipse
+                z-index: 9 !important
+                position: absolute
+                top: 0
+                left: 0
+                margin-left: 30px
+                height: 140px
+                width: 180px
+                border-radius: 90px / 70px
+                -moz-border-radius: 100px / 50px
+                transform: rotate(45deg)
+                -webkit-transform: rotate(45deg)
+                -moz-transform: rotate(45deg)
+                -o-transform: rotate(45deg)
+                -webkit-box-shadow: -20px 30px 23px 0px rgba(0, 0, 0, 0.5)
+                -moz-box-shadow: -20px 30px 23px 0px rgba(0, 0, 0, 0.5)
+                box-shadow: -5px 10px 23px 0px rgba(0, 0, 0, 0.5)
+                background: rgb(253, 77, 22)
+
+    @media screen and (min-width: 1200px)
+        .logo
+            z-index: 10
+            position: fixed
+            top: 550px
+            left: 50vw
+            margin-top: -125px
+            margin-left: -200px
+            height: 250px
+            width: 400px
+
+            &__name
+                margin-left: -70px
+                margin-top: -70px
+
+                &--z-index
+                    z-index: 10
+                    width: 400px
+
+            &__app
+                position: absolute
+                top: 0
+                left: 0
+                margin-top: 45%
+                margin-left: 72%
+                font-size: 25px
+
+            &__version
+                font-size: 16px
+
+            &__elipse
+                z-index: 9 !important
+                position: absolute
+                top: 0
+                left: 0
+                margin-left: 45px
+                height: 220px
+                width: 260px
+                border-radius: 130px / 110px
+                -moz-border-radius: 130px / 110px
+                transform: rotate(45deg)
+                -webkit-transform: rotate(45deg)
+                -moz-transform: rotate(45deg)
+                -o-transform: rotate(45deg)
+                -webkit-box-shadow: -20px 30px 23px 0px rgba(0, 0, 0, 0.5)
+                -moz-box-shadow: -20px 30px 23px 0px rgba(0, 0, 0, 0.5)
+                box-shadow: -5px 10px 23px 0px rgba(0, 0, 0, 0.5)
+                background: rgb(253, 77, 22)
+</style>

@@ -1,6 +1,6 @@
 <template>
     <v-footer absolute class="footer--background" style="z-index: 10; color: black">
-        <v-flex class="text-md-center" xs12>
+        <v-flex class="text-md-center footer" xs12>
             <v-flex class="footer--inline-block footer__prefix">
             {{ new Date().getFullYear() }} -- Powered by
             </v-flex>
@@ -26,10 +26,10 @@
 
 <style lang="sass" scoped>
     .footer
+        margin-left: -35px
         &__prefix
             font-size: 17px
             margin-bottom: 20px
-            text-align: center
         &__name
             position: absolute
             top: 0
